@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario de Aprendizaje - Ashly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6ee0;
+            --secondary-color: #6c63ff;
+            --success-color: #38a169;
+            --info-color: #4c51bf;
+            --warning-color: #d69e2e;
+            --danger-color: #e53e3e;
+            --light-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header, footer {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container, footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        header nav a, footer nav a {
+            color: white;
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        header nav a:hover, footer nav a:hover {
+            opacity: 0.8;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--light-bg);
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: calc(50% - 20px);
+            margin-bottom: 30px;
+        }
+
+        .timeline-item.left {
+            left: 0;
+            padding-right: 40px;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+            padding-left: 40px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--light-bg);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .left::after, .right::after {
+            left: 15px;
+        }
+
+        .right {
+            left: 0;
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-date i {
+            margin-right: 8px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background-color: #e0e7ff;
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-showcase {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .code-snippet {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .function {
+            color: #61afef;
+        }
+
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        footer .footer-text p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        footer .footer-text p:last-child {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        footer .social-links {
+            margin: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .right::after {
+                left: 15px;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+
+        /* GraphQL Section Styles */
+        .graphql-section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .graphql-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .graphql-header h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .graphql-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .graphql-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            background: var(--light-bg);
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-number {
+            background: var(--info-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 3px solid var(--info-color);
+        }
+
+        .info-box {
+            background: #f0f5ff;
+            border-left: 4px solid var(--info-color);
+            padding: 1.25rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .graphql-section {
+                padding: 0 1rem;
+            }
+            
+            .graphql-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .card-body {
+                padding: 1.25rem 1rem;
+            }
+        }
+
+        /* New styles for Week 10 content */
+        .section-divider {
+            margin: 2.5rem 0 2.5rem -10px;
+            padding: 2rem 0 0 10px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .section-divider h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .info-note {
+            background-color: #eff6ff;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            color: #1e40af;
+            font-size: 0.9rem;
+            margin: 1.5rem 0 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .info-note i {
+            margin-top: 0.2rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header, footer {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container, footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        header nav a, footer nav a {
+            color: white;
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        header nav a:hover, footer nav a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1 style="margin: 0; font-size: 1.8rem;">Diario de Aprendizaje</h1>
+                <p style="margin: 0.5rem 0 0 0; opacity: 0.9; font-size: 1.1rem;">Ashly Francinie Rodríguez Lanuza</p>
+            </div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile">
+            <div style="background-color: #e0e7ff; width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary-color);">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2>Ashly Francinie Rodríguez Lanuza</h2>
+            <p>Estudiante de Base de Datos Avanzada</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Semana 1 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 1
+                    </div>
+                    <h3>Introducción al Modelo Objeto-Relacional</h3>
+                    <p>En la primera semana, revisamos el cronograma del curso y los conceptos fundamentales que se abordarían durante el cuatrimestre. El modelo objeto-relacional combina las ventajas de las bases de datos relacionales con la programación orientada a objetos, ofreciendo mayor flexibilidad y adaptabilidad.</p>
+                    
+                    <h4>Bases de Datos por Objetos: Postgres vs Oracle</h4>
+                    <p>IBM es considerado el pionero en el desarrollo de bases de datos en la industria. En el contexto actual, es importante entender cómo integrar múltiples fuentes de datos, donde una solución práctica es utilizar formatos planos como TXT como intermediario para el procesamiento y migración de datos.</p>
+                    
+                    <div style="margin: 1rem 0; background-color: #f0f7ff; padding: 1rem; border-radius: 8px; border-left: 4px solid #4a90e2;">
+                        <h4 style="margin-top: 0; color: #2c5282;">🔍 Conceptos Clave de la Programación Orientada a Objetos en Bases de Datos</h4>
+                        
+                        <h5>Características Principales</h5>
+                        <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                            <li><strong>Modularidad</strong>: Permite estructurar el código en módulos independientes</li>
+                            <li><strong>Herencia</strong>: Las clases pueden heredar atributos y métodos de otras clases</li>
+                            <li><strong>Encapsulamiento</strong>: Ocultamiento de los detalles internos de implementación</li>
+                            <li><strong>Polimorfismo</strong>: Capacidad de procesar objetos de diferentes formas</li>
+                        </ul>
+                        
+                        <h5>Conceptos Avanzados</h5>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>Composición</strong>: Relación fuerte donde el ciclo de vida de los componentes depende del contenedor</li>
+                            <li><strong>Agregación</strong>: Relación más flexible donde los objetos pueden ser compartidos</li>
+                            <li><strong>Tipos de Datos Definidos por el Usuario (UDT)</strong>: Permiten crear estructuras de datos personalizadas</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Modelado de Datos</h4>
+                    <p>El modelado en bases de datos orientadas a objetos implica crear representaciones que evitan información redundante. Un modelo de datos orientado a objetos se basa en relaciones de tipo "todo-parte" donde los objetos pueden contener o poseer otros objetos.</p>
+                    
+                    <div style="margin: 1rem 0; background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                        <h4 style="margin-top: 0; color: #2f855a;">💡 Ventajas del Modelo Objeto-Relacional</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Mayor capacidad de modelado de datos complejos</li>
+                            <li>Mejor integración con lenguajes de programación orientados a objetos</li>
+                            <li>Mayor flexibilidad en el diseño de la base de datos</li>
+                            <li>Mejor rendimiento para ciertos tipos de consultas</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Puntos clave:</h4>
+                    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                        <li>Integración de conceptos de POO: encapsulamiento, herencia y polimorfismo</li>
+                        <li>Superación de limitaciones del modelo relacional tradicional</li>
+                        <li>Uso de identificadores únicos (OID) y tipos de datos personalizados</li>
+                        <li>Creación de estructuras de datos más complejas y realistas</li>
+                    </ul>
+                    
+                    <p>Esta base teórica se complementó con un laboratorio práctico para reforzar los conceptos aprendidos.</p>
+                    
+                    <h4>Ejemplos Prácticos en SQL Server</h4>
+                    
+                    <div class="code-block" style="background-color: #f5f5f5; border-radius: 8px; padding: 1rem; margin: 1rem 0; overflow-x: auto;">
+                        <h5>1. Creación de Tipos de Datos Personalizados</h5>
+                        <pre><code class="language-sql">-- Crear un tipo de dato personalizado
+CREATE TYPE [dbo].[PhoneCelular] FROM [nvarchar](8) NOT NULL
+GO
+
+-- Crear una tabla que utiliza el tipo personalizado
+CREATE TABLE [dbo].[Empleados](
+    [EmpID] [int] NULL,
+    [EmpNombre] [varchar](20) NULL,
+    [EmpNumberPersonal] [dbo].[PhoneCelular]
+) ON [PRIMARY]
+GO
+
+-- Insertar datos
+INSERT INTO Empleados VALUES(1, 'Huberth', '83088505');
+INSERT INTO Empleados VALUES(2, 'Rebeca', '83098505');
+
+-- Consultar datos
+SELECT * FROM Empleados
+SELECT * FROM Empleados WHERE EmpID = 2</code></pre>
+                        
+                        <h5>2. Creación y Uso de Funciones Personalizadas</h5>
+                        <pre><code class="language-sql">-- Eliminar la función si ya existe
+IF OBJECT_ID (N'dbo.ufnGetInventoryStock', N'FN') IS NOT NULL
+    DROP FUNCTION ufnGetInventoryStock;
+GO
+
+-- Crear una función que devuelve el inventario disponible
+CREATE FUNCTION dbo.ufnGetInventoryStock(@ProductID int)
+RETURNS int
+AS
+-- Retorna el nivel de inventario para el producto
+BEGIN
+    DECLARE @ret int;
+    SELECT @ret = SUM(p.Quantity)
+    FROM Production.ProductInventory p
+    WHERE p.ProductID = @ProductID
+        AND p.LocationID = '6';
+     IF (@ret IS NULL)
+        SET @ret = 0;
+    RETURN @ret;
+END;
+
+-- Usar la función en una consulta
+SELECT 
+    ProductModelID, 
+    Name, 
+    dbo.ufnGetInventoryStock(ProductID) AS CurrentSupply
+FROM Production.Product
+WHERE ProductModelID BETWEEN 75 AND 80;
+GO</code></pre>
+                    </div>
+                    
+                    <div class="info-box" style="background-color: #e8f4f8; border-left: 4px solid #2b6cb0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="margin-top: 0; color: #2c5282;">📌 Puntos Clave de los Ejemplos</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Uso de tipos de datos personalizados para mantener consistencia</li>
+                            <li>Creación de tablas con tipos definidos por el usuario</li>
+                            <li>Manejo de funciones personalizadas en SQL Server</li>
+                            <li>Integración de funciones en consultas complejas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Bases de Datos</span>
+                        <span class="tech-tag">Modelo Objeto-Relacional</span>
+                        <span class="tech-tag">POO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 2 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 2 - No hubo clases
+                    </div>
+                    <h3>Suspensión de actividades</h3>
+                    <div style="display: flex; align-items: center; background-color: #fff8f8; padding: 1rem; border-radius: 8px; border-left: 4px solid #ff6b6b; margin: 0.5rem 0;">
+                        <i class="fas fa-calendar-times" style="font-size: 1.5rem; color: #ff6b6b; margin-right: 1rem;"></i>
+                        <div>
+                            <p style="margin: 0;">No se realizaron clases esta semana.</p>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9em; color: #666;">Las actividades programadas se verán en una sesión de recuperación.</p>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Suspensión</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 3 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 3 - Clase con profesores interinos
+                    </div>
+                    <h3>Implementación de GraphQL con Apollo Server</h3>
+                    
+                    <p>En esta sesión práctica con el profesor Jorge Ruiz, exploramos la creación de un servidor GraphQL utilizando Apollo Server junto con MongoDB. La clase se centró en entender cómo Apollo Server facilita la implementación de GraphQL en Node.js.</p>
+                    
+                    <div style="margin: 1rem 0; text-align: center;">
+                        <img src="fotos/semana4-1.png" alt="Clase de GraphQL con Apollo" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Figura: Sesión práctica sobre GraphQL y Apollo con el profesor Jorge Ruiz</p>
+                    </div>
+                    
+                    <h4>¿Qué es Apollo Server?</h4>
+                    <p>Apollo Server es un servidor de código abierto de GraphQL que funciona con cualquier base de datos y con cualquier cliente de GraphQL. Es compatible con todas las funciones principales de GraphQL y se integra perfectamente con otras herramientas del ecosistema GraphQL.</p>
+                    
+                    <div style="margin: 1rem 0; background-color: #f0f7ff; padding: 1rem; border-radius: 8px; border-left: 4px solid #4a90e2;">
+                        <h4 style="margin-top: 0; color: #2c5282;">🔍 Puntos clave de Apollo Server:</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>Esquema fuertemente tipado</strong>: Define tu API de manera clara y precisa</li>
+                            <li><strong>Integración con múltiples fuentes de datos</strong>: Conecta con bases de datos, APIs REST, gRPC, etc.</li>
+                            <li><strong>Herramientas de desarrollo</strong>: Incluye Apollo Studio para probar y documentar tu API</li>
+                            <li><strong>Rendimiento optimizado</strong>: Incluye características como el almacenamiento en caché y la carga por lotes</li>
+                            <li><strong>Seguridad integrada</strong>: Validación de esquemas y protección contra consultas maliciosas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-snippet" style="margin: 1rem 0;">
+                        <span class="comment">// Configuración básica de Apollo Server</span><br>
+                        <span class="keyword">const</span> { ApolloServer } = <span class="function">require</span>('apollo-server');<br>
+                        <span class="keyword">const</span> mongoose = <span class="function">require</span>('mongoose');<br><br>
+                        
+                        <span class="comment">// 1. Definir el esquema GraphQL</span><br>
+                        <span class="keyword">const</span> typeDefs = `
+                        &nbsp;&nbsp;type Usuario {
+                        &nbsp;&nbsp;&nbsp;&nbsp;id: ID!
+                        &nbsp;&nbsp;&nbsp;&nbsp;nombre: String!
+                        &nbsp;&nbsp;&nbsp;&nbsp;email: String!
+                        &nbsp;&nbsp;}
+
+                        &nbsp;&nbsp;type Query {
+                        &nbsp;&nbsp;&nbsp;&nbsp;usuarios: [Usuario!]!
+                        &nbsp;&nbsp;}
+                        `;
+
+                        <span class="comment">// 2. Conectar a MongoDB</span>
+                        mongoose.connect('mongodb://localhost:27017/ejemplo', {
+                        &nbsp;&nbsp;useNewUrlParser: <span class="keyword">true</span>,
+                        &nbsp;&nbsp;useUnifiedTopology: <span class="keyword">true</span>
+                        });
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f8f9fa; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #2c5282;">💡 Aprendizajes clave:</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Apollo Server simplifica la creación de APIs GraphQL</li>
+                            <li>La integración con MongoDB permite un desarrollo full-stack más fluido</li>
+                            <li>El sistema de tipos de GraphQL mejora la calidad del código</li>
+                            <li>Las herramientas de desarrollo facilitan la depuración y pruebas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">Apollo Server</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    
+                    <h4>Guía Práctica: Modelo Objeto-Relacional en Oracle</h4>
+                    <p>Además de la implementación con GraphQL, trabajamos en un laboratorio práctico sobre el modelo objeto-relacional en Oracle. Este enfoque combina las características de las bases de datos relacionales con la programación orientada a objetos.</p>
+                    
+                    <div class="code-block" style="background-color: #f5f5f5; border-radius: 8px; padding: 1rem; margin: 1rem 0; overflow-x: auto;">
+                        <h5>1. Configuración Inicial</h5>
+                        <pre><code class="language-sql">-- Creación de usuario y asignación de permisos
+CREATE USER c##franly IDENTIFIED BY utn$;
+GRANT RESOURCE, CREATE SESSION TO c##franly;
+ALTER USER c##franly QUOTA 150M ON USERS;</code></pre>
+                        
+                        <h5>2. Creación de Tipos de Objetos</h5>
+                        <pre><code class="language-sql">-- Tipo para información de contacto
+CREATE OR REPLACE TYPE tp_Contacto AS OBJECT(
+  telefhab VARCHAR2(10),
+  celular  VARCHAR2(10),
+  email VARCHAR2(65)
+);
+
+-- Tipo para dirección
+CREATE OR REPLACE TYPE tp_Direccion AS OBJECT(
+  provincia VARCHAR2(10),
+  canton VARCHAR2(25),
+  distrito VARCHAR2(50),
+  direxacta VARCHAR2(100) 
+);</code></pre>
+
+                        <h5>3. Creación de Jerarquía de Tipos</h5>
+                        <pre><code class="language-sql">-- Tipo base Persona
+CREATE OR REPLACE TYPE tp_Persona AS OBJECT(
+  id INTEGER,
+  nombre VARCHAR2(15),
+  apellp VARCHAR2(12),
+  apellm VARCHAR2(12),
+  fechanac DATE,
+  contacto tp_Contacto,
+  localizado tp_Direccion,
+  MEMBER FUNCTION edad RETURN NUMBER,
+  PRAGMA RESTRICT_REFERENCES(edad, WNDS),
+  
+  MEMBER FUNCTION nombre_completo RETURN VARCHAR2,      
+  PRAGMA RESTRICT_REFERENCES(nombre_completo, WNDS),
+  
+  MAP MEMBER FUNCTION iden RETURN NUMBER,
+  PRAGMA RESTRICT_REFERENCES(iden, WNDS) 
+) NOT FINAL;
+
+-- Tipo derivado Profesor
+CREATE OR REPLACE TYPE tp_Profesor UNDER tp_Persona(
+   niv_acad VARCHAR2(15),
+   titulo VARCHAR2(50),
+   descripcion VARCHAR(100),
+   anho_ing SMALLINT
+);</code></pre>
+
+                        <h5>4. Implementación de Métodos</h5>
+                        <pre><code class="language-sql">-- Cuerpo del tipo tp_Persona
+CREATE OR REPLACE TYPE BODY tp_Persona AS
+  MEMBER FUNCTION edad RETURN NUMBER IS
+    a NUMBER;
+    d DATE;
+  BEGIN
+    d:= CURRENT_DATE;
+    a:= TO_CHAR(d,'YYYY') - TO_CHAR(fechanac,'YYYY');
+    IF ((TO_CHAR(d,'MM') < TO_CHAR(fechanac,'MM')) OR 
+       (TO_CHAR(d,'MM') < TO_CHAR(fechanac,'MM')) AND
+       (TO_CHAR(d,'DD') < TO_CHAR(fechanac,'DD')))
+    THEN
+      a:= a+1;
+    END IF;
+    RETURN a;
+  END;
+  
+  MEMBER FUNCTION nombre_completo RETURN VARCHAR2 IS
+    salida VARCHAR2(50);
+  BEGIN
+    salida:= TRIM(apellp) || ' ' || TRIM(apellm) || ', ' || TRIM(nombre);
+    RETURN salida;
+  END;
+  
+  MAP MEMBER FUNCTION iden RETURN NUMBER IS
+  BEGIN
+    RETURN id;
+  END;
+END;
+/
+
+-- Cuerpo del tipo tp_Matricula
+CREATE OR REPLACE TYPE BODY tp_Matricula AS
+  MEMBER FUNCTION estado RETURN VARCHAR2 IS
+    resp VARCHAR2(25);    
+  BEGIN
+    resp := 'cursando';
+    IF(nota = 'nsp') THEN
+      resp := 'No se presentó';
+    ELSIF (nota = 'rj') THEN
+      resp := 'Retiro justificado';  
+    ELSIF (nota = 'cv') THEN
+      resp := 'Convalidada';
+    ELSIF (nota = 'eq') THEN
+      resp := 'Equiparada';
+    ELSIF (TO_NUMBER(nota, '99.99') >= 7.00) THEN
+      resp := 'Aprobado (a)';    
+    ELSIF (TO_NUMBER(nota, '99.99') < 6) THEN
+      resp := 'Reprobado (a)';  
+    ELSIF ((TO_NUMBER(nota, '99.99') >= 6) AND (TO_NUMBER(nota, '99.99') < 7)) THEN
+      resp := 'Aplazado (a)';  
+    END IF;
+    RETURN resp;
+  END;
+END;
+/</code></pre>
+
+                        <h5>5. Creación de Tablas de Objetos</h5>
+                        <pre><code class="language-sql">-- Tabla de Profesores
+CREATE TABLE tb_Profesor OF tp_Profesor(
+  id NOT NULL PRIMARY KEY  
+);
+
+-- Tabla de Estudiantes
+CREATE TABLE tb_Estudiante OF tp_Estudiante(
+  id NOT NULL PRIMARY KEY  
+);
+
+-- Tabla de Carreras
+CREATE TABLE tb_Carrera OF tp_Carrera(
+  codigo NOT NULL PRIMARY KEY
+);
+
+-- Tabla de Cursos con referencia a Carrera
+CREATE TABLE tb_Curso OF tp_Cursos(
+  codigo NOT NULL PRIMARY KEY,
+  SCOPE FOR (carrera) IS tb_Carrera
+);</code></pre>
+
+                        <h5>6. Inserción de Datos</h5>
+                        <pre><code class="language-sql">-- Insertar un profesor
+INSERT INTO tb_Profesor
+VALUES(1111,'Elsie','Garro','Mata','08-Jul-1970',
+       tp_Contacto('26610756','83851293','fumaresmalo@utn.ac.cr'),
+       tp_Direccion('Puntarenas','Esparza','Macacona','En la casa de Huberth'),
+       'Licenciada','Telecomunicaciones','Cursos del programa de Cisco System',2015);
+
+-- Insertar un estudiante
+INSERT INTO tb_Estudiante
+VALUES(102220222,'Rebeca','Lostalo','Mora','23-Sep-1997',
+       tp_Contacto('250258901','8315429','rlostalo@utn.ac.cr'),
+       tp_Direccion('Puntarenas','Puntarenas','Barranca','Costado oeste del parque de Barranca'),
+       2019,'02','No requiere');
+
+-- Insertar una carrera
+INSERT INTO tb_Carrera VALUES('ITI','Tecnologías de la Información',2018,'A');
+
+-- Insertar un curso
+INSERT INTO tb_curso VALUES('ITI-116','Fundamentos de Programación',1,4,
+      (SELECT REF(c) FROM tb_carrera c WHERE c.codigo = 'ITI'));</code></pre>
+
+                        <h5>7. Consultas Avanzadas</h5>
+                        <pre><code class="language-sql">-- Consulta con métodos de objeto
+SELECT p.id, p.nombre_completo(), p.edad(),
+       p.contacto.telefhab, p.contacto.email
+FROM tb_Profesor p;
+
+-- Consulta con DEREF para acceder a objetos referenciados
+SELECT c.codigo, c.nombre, 
+       DEREF(c.carrera).nombre AS nombre_carrera
+FROM tb_Curso c;</code></pre>
+                    </div>
+                    
+                    <div class="info-box" style="background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                        <h5 style="margin-top: 0; color: #2f855a;">💡 Conceptos Clave del Modelo Objeto-Relacional</h5>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>Encapsulamiento</strong>: Los objetos agrupan datos y comportamiento relacionado</li>
+                            <li><strong>Herencia</strong>: Permite crear jerarquías de tipos especializados</li>
+                            <li><strong>Polimorfismo</strong>: Los métodos pueden comportarse de manera diferente según el tipo de objeto</li>
+                            <li><strong>Referencias a objetos</strong>: Permiten relaciones entre objetos sin duplicar datos</li>
+                            <li><strong>Métodos</strong>: Comportamiento asociado a los tipos de objetos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box" style="background-color: #fff3cd; padding: 1rem; border-radius: 8px; border-left: 4px solid #e6a23c; margin-top: 1rem;">
+                        <h5 style="margin-top: 0; color: #856404;">📌 Ventajas del Modelo Objeto-Relacional</h5>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Mayor capacidad de modelado para dominios complejos</li>
+                            <li>Mejor integración con lenguajes de programación orientados a objetos</li>
+                            <li>Mayor productividad en el desarrollo</li>
+                            <li>Mejor rendimiento para ciertos tipos de consultas</li>
+                            <li>Mantenimiento más sencillo del esquema de base de datos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack" style="margin-top: 1rem;">
+                        <span class="tech-tag">Oracle</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Modelo Objeto-Relacional</span>
+                        <span class="tech-tag">PL/SQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 4 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 4 - Profundización en GraphQL y Apollo
+                    </div>
+                    <h3>Implementación Avanzada con GraphQL y MongoDB</h3>
+                    
+                    <p>Se profundizó en el uso de GraphQL y Apollo, la infraestructura que permite la administración de GraphQL. Se detalló el procedimiento completo para configurar un proyecto utilizando estas tecnologías.</p>
+                    
+                    <div style="margin: 1.5rem 0; text-align: center;">
+                        <img src="fotos/semana4-real.png" alt="Implementación de GraphQL y MongoDB" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Figura: Estructura del proyecto GraphQL con Apollo y MongoDB</p>
+                    </div>
+                    
+                    <h4>Estructura del Proyecto</h4>
+                    <p>El proyecto se organiza de la siguiente manera:</p>
+                    <ul>
+                        <li><code>data_db.js</code>: Configuración y conexión a la base de datos</li>
+                        <li><code>schema_db.js</code>: Definición de la estructura de tipos y validaciones de campos no nulos</li>
+                        <li><code>typeDefs</code> y <code>resolvers</code>: Para definir las operaciones y su lógica</li>
+                        <li><code>models/</code>: Contiene los esquemas de MongoDB (ej: <code>mdl_Categories.js</code>)</li>
+                    </ul>
+                    
+                    <div style="margin: 1rem 0; background-color: #f8f5ff; padding: 1rem; border-radius: 8px; border-left: 4px solid #7c3aed;">
+                        <h4 style="margin-top: 0; color: #4c1d95;">⚙️ Flujo de Trabajo</h4>
+                        <ol style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Configuración de Apollo Server con Express</li>
+                            <li>Conexión a MongoDB usando Mongoose</li>
+                            <li>Definición de tipos y esquemas en GraphQL</li>
+                            <li>Implementación de consultas y mutaciones</li>
+                            <li>Configuración de Nodemon para desarrollo</li>
+                        </ol>
+                    </div>
+                    
+                    <p>Apollo Server se encarga de gestionar todas las solicitudes, proporcionando respuestas en formato JSON. La integración con Mongoose permite una conexión eficiente con MongoDB, mientras que Nodemon facilita el desarrollo al reiniciar automáticamente el servidor ante cambios en el código.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">Apollo Server</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Mongoose</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Nodemon</span>
+                    </div>
+                    
+                    <h4>Manejo de Datos XML en Oracle</h4>
+                    <p>En la segunda parte de la clase, exploramos el manejo de datos XML en Oracle, incluyendo la creación de tablas con tipos de datos XML, la inserción de datos XML y consultas avanzadas.</p>
+                    
+                    <div class="code-block" style="background-color: #f5f5f5; border-radius: 8px; padding: 1rem; margin: 1rem 0; overflow-x: auto;">
+                        <h5>1. Configuración Inicial</h5>
+                        <pre><code class="language-sql">-- Creación de usuario y asignación de permisos
+CREATE USER c##fran IDENTIFIED BY utn;
+GRANT RESOURCE, CREATE SESSION TO c##fran;
+ALTER USER c##fran QUOTA 100M ON USERS;</code></pre>
+                        
+                        <h5>2. Creación de Tablas con Soporte XML</h5>
+                        <pre><code class="language-sql">-- Tabla de clientes
+CREATE TABLE cliente(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    cedula INT NOT NULL UNIQUE,
+    nombre VARCHAR2(45) NOT NULL,
+    tipo VARCHAR2(10) CONSTRAINT resTipo CHECK(tipo IN ('físico','jurídico'))
+);
+
+-- Tabla para almacenar documentos XML
+CREATE TABLE tbl_xml_01(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    cliente NUMBER NOT NULL,
+    fecha TIMESTAMP NOT NULL,
+    pedido XMLTYPE NOT NULL
+);
+
+-- Claves primarias y foráneas
+ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(id);
+ALTER TABLE tbl_xml_01 ADD CONSTRAINT pk_xml_01 PRIMARY KEY(id);
+ALTER TABLE tbl_xml_01 ADD CONSTRAINT fk_xmlCliente 
+    FOREIGN KEY(cliente) REFERENCES cliente(id);</code></pre>
+
+                        <h5>3. Inserción de Datos</h5>
+                        <pre><code class="language-sql">-- Insertar clientes
+INSERT INTO cliente(cedula, nombre, tipo) 
+VALUES(101230123,'Morticia Addams','físico');
+
+-- Insertar documento XML
+INSERT INTO tbl_xml_01(cliente, fecha, pedido) 
+VALUES(1, CURRENT_TIMESTAMP, '&lt;?xml version="1.0" ?&gt;
+&lt;informacion&gt;
+    &lt;general&gt;
+        &lt;bodega&gt;#13 Llorente de Tibas&lt;/bodega&gt;
+        &lt;vendedor&gt;Karina del Monte&lt;/vendedor&gt;
+        &lt;tipopago&gt;efectivo&lt;/tipopago&gt;
+        &lt;tarjeta&gt;0&lt;/tarjeta&gt;
+        &lt;total&gt;265000&lt;/total&gt;
+    &lt;/general&gt;
+    &lt;detalle&gt;
+        &lt;linea num="1"&gt;
+            &lt;codigo&gt;340&lt;/codigo&gt;
+            &lt;casa&gt;Concha y Toro&lt;/casa&gt;
+            &lt;descripcion&gt;Casillero del Diablo, Leyenda&lt;/descripcion&gt;
+            &lt;variedad&gt;Cabernet Sauvignon&lt;/variedad&gt;
+            &lt;cantidad&gt;5&lt;/cantidad&gt;
+            &lt;valor&gt;15000&lt;/valor&gt;
+            &lt;total&gt;75000&lt;/total&gt;
+        &lt;/linea&gt;
+    &lt;/detalle&gt;
+&lt;/informacion&gt;');</code></pre>
+
+                        <h5>4. Consultas XML</h5>
+                        <pre><code class="language-sql">-- Extraer valor simple
+SELECT p.cliente, c.nombre, 
+       EXTRACTVALUE(p.pedido,'/informacion/general/bodega') AS bodega
+FROM tbl_xml_01 p, cliente c
+WHERE c.id = p.cliente;
+
+-- Extraer múltiples valores
+SELECT p.cliente, c.nombre,
+       EXTRACTVALUE(p.pedido,'/informacion/general/bodega') AS bodega,
+       EXTRACTVALUE(p.pedido,'/informacion/general/vendedor') AS vendedor
+FROM tbl_xml_01 p, cliente c
+WHERE c.id = p.cliente;
+
+-- Extraer datos de una estructura multivalor
+SELECT EXTRACTVALUE(column_value,'/linea/codigo') AS codigo,
+       EXTRACTVALUE(column_value,'/linea/descripcion') AS producto,
+       EXTRACTVALUE(column_value,'/linea/cantidad') AS cantidad,
+       EXTRACTVALUE(column_value,'/linea/valor') AS valor
+FROM TABLE(XMLSEQUENCE(XMLTYPE((SELECT p.pedido.getStringVal() 
+                              FROM tbl_xml_01 p
+                              WHERE p.id = 1))
+                      .EXTRACT('/informacion/detalle/linea')));</code></pre>
+
+                        <h5>5. Actualización de Datos XML</h5>
+                        <pre><code class="language-sql">-- Agregar elemento hijo
+UPDATE tbl_xml_01 
+SET pedido = APPENDCHILDXML(pedido, '/informacion/detalle',
+    '&lt;linea num="4"&gt;
+        &lt;codigo&gt;348&lt;/codigo&gt;
+        &lt;casa&gt;Concha y Toro&lt;/casa&gt;
+        &lt;descripcion&gt;Casillero del Diablo Reserva Privada&lt;/descripcion&gt;
+        &lt;variedad&gt;Carmenere&lt;/variedad&gt;
+        &lt;cantidad&gt;2&lt;/cantidad&gt;
+        &lt;valor&gt;45000&lt;/valor&gt;
+        &lt;total&gt;90000&lt;/total&gt;
+    &lt;/linea&gt;')
+WHERE id = 1;
+
+-- Actualizar valor
+UPDATE tbl_xml_01 
+SET pedido = UPDATEXML(pedido,'/informacion/general/total/text()',355000)
+WHERE id = 1;
+
+-- Eliminar elemento
+UPDATE tbl_xml_01 
+SET pedido = DELETEXML(pedido,'/informacion/detalle/linea[2]')
+WHERE id = 1;</code></pre>
+
+                        <h5>6. Validación con XSD</h5>
+                        <pre><code class="language-sql">-- Registrar esquema XSD
+BEGIN
+    DBMS_XMLSCHEMA.registerSchema(
+        schemaurl => 'valiRecibo.xsd',
+        schemadoc => '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        &lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+            &lt;!-- Definición del esquema XSD --&gt;
+        &lt;/xs:schema&gt;',
+        local => TRUE,
+        gentypes => FALSE,
+        gentables => FALSE
+    );
+END;
+/
+
+-- Validar XML contra el esquema
+SELECT id, cliente, fecha, XMLISVALID(pedido,'valiRecibo.xsd')
+FROM tbl_xml_01;
+
+-- Trigger para validación automática
+CREATE OR REPLACE TRIGGER trg_insXML
+AFTER INSERT ON tbl_xml_01 FOR EACH ROW
+DECLARE
+    estado NUMBER;
+BEGIN
+    SELECT XMLISVALID(:new.pedido,'valiRecibo.xsd') INTO estado FROM dual;
+    IF estado = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'XML document is INVALID');
+    END IF;
+END;
+/</code></pre>
+                    </div>
+                    
+                    <div class="info-box" style="background-color: #e8f4f8; padding: 1rem; border-radius: 8px; border-left: 4px solid #2b6cb0; margin-top: 1rem;">
+                        <h5 style="margin-top: 0; color: #2c5282;">💡 Conceptos Clave de XML en Oracle</h5>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>XMLType</strong>: Tipo de datos nativo para almacenar y manipular documentos XML</li>
+                            <li><strong>XPath</strong>: Lenguaje para navegar y consultar documentos XML</li>
+                            <li><strong>Validación</strong>: Uso de esquemas XSD para validar la estructura de documentos XML</li>
+                            <li><strong>Operaciones</strong>: Inserción, actualización y eliminación de nodos XML</li>
+                            <li><strong>Rendimiento</strong>: Índices XML para optimizar consultas sobre documentos grandes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack" style="margin-top: 1rem;">
+                        <span class="tech-tag">Oracle</span>
+                        <span class="tech-tag">XML</span>
+                        <span class="tech-tag">XSD</span>
+                        <span class="tech-tag">PL/SQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 5 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 5 - Práctica de Consultas GraphQL
+                    </div>
+                    
+                    <div class="graphql-section">
+                        <div class="graphql-header">
+                            <h2>
+                                <i class="fas fa-project-diagram"></i>
+                                Guía Práctica: GraphQL con Apollo Server
+                            </h2>
+                            <p>
+                                Aprende a implementar un servidor GraphQL completo utilizando Apollo Server y MongoDB, 
+                                desde la configuración inicial hasta consultas y mutaciones avanzadas.
+                            </p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4><i class="fas fa-lightbulb"></i> Objetivos de Aprendizaje</h4>
+                            <p>
+                                Esta práctica te permitirá comprender cómo estructurar consultas GraphQL, visualizar resultados 
+                                de manera efectiva y la importancia de la documentación del esquema para construir consultas precisas.
+                            </p>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <span class="card-number">1</span>
+                                <h3 class="card-title">Configuración Inicial del Proyecto</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Primero, crea la estructura de directorios e instala las dependencias necesarias:</p>
+                                <pre class="code-block"><code class="language-bash"># Crear estructura de directorios
+mkdir graphQL
+mkdir graphQL/demo_01
+cd graphQL/demo_01
+
+# Inicializar proyecto Node.js
+npm init --yes
+npm pkg set type="module"
+
+# Instalar dependencias
+npm install @apollo/server graphql mongoose nodemon</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <span class="card-number">2</span>
+                                <h3 class="card-title">Requisitos Previos</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Antes de comenzar, asegúrate de tener instalado:</p>
+                                <ul style="margin: 0.75rem 0 1rem 1.5rem;">
+                                    <li style="margin-bottom: 0.5rem;">MongoDB Community 8.0.10 o superior</li>
+                                    <li style="margin-bottom: 0.5rem;">MongoDB Compass 1.46.3 o superior</li>
+                                    <li style="margin-bottom: 0.5rem;">Node.js LTS 22.16.0 o superior</li>
+                                    <li>Visual Studio Code (opcional)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <span class="card-number">3</span>
+                                <h3 class="card-title">Configuración de package.json</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Actualiza el archivo package.json con la siguiente configuración:</p>
+                                <pre class="code-block"><code class="language-json">{
+  "name": "demo_01",
+  "version": "1.0.0",
+  "description": "GraphQL con Apollo Server y MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.12.2",
+    "graphql": "^16.11.0",
+    "mongoose": "^8.2.0",
+    "nodemon": "^3.1.0"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <span class="card-number">4</span>
+                                <h3 class="card-title">Configuración del Servidor (index.js)</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Crea un archivo <code>index.js</code> con la siguiente configuración:</p>
+                                <pre class="code-block"><code class="language-javascript">import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import mongoose from 'mongoose';
+
+// Conexión a MongoDB
+mongoose.connect('mongodb://localhost:27017/', { 
+  dbName: 'Northwind' 
+})
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.error('Error de conexión a MongoDB:', err));
+
+// Importar modelos
+import './models/mdl_Categories.js';
+import './models/mdl_Products.js';
+import './models/mdl_Suppliers.js';
+
+// Importar esquemas y resolvers
+import { typeDefs } from './data/schema_db.js';
+import { resolvers } from './data/resolversMongo.js';
+
+// Configurar Apollo Server
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+// Iniciar servidor
+const { url } = await startStandaloneServer(server, {
+  listen: { port: 4000 }
+});
+
+console.log(`🚀 Servidor listo en: ${url}`);</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <span class="card-number">5</span>
+                                <h3 class="card-title">Modelos de Datos</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Crea la carpeta <code>models</code> y dentro el archivo <code>mdl_Categories.js</code>:</p>
+                                <pre class="code-block"><code class="language-javascript">import mongoose from "mongoose";
+
+const categorySchema = new mongoose.Schema({
+    CategoryID: { type: Number, required: true, unique: true },
+    CategoryName: { type: String, required: true },
+    Description: { type: String, required: true }
+});
+
+export default mongoose.model('Categories', categorySchema);</code></pre>
+                                
+                                <p style="margin-top: 1.5rem;">Crea también <code>mdl_Products.js</code> y <code>mdl_Suppliers.js</code> con estructuras similares.</p>
+                            </div>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <span class="card-number">6</span>
+                                <h3 class="card-title">Ejemplos de Consultas GraphQL</h3>
+                            </div>
+                            <div class="card-body">
+                                <h4>Consulta de Categorías con Productos</h4>
+                                <pre class="code-block"><code class="language-graphql">query GetCategoriesWithProducts {
+  categories {
+    CategoryID
+    CategoryName
+    Products {
+      ProductID
+      ProductName
+      UnitPrice
+    }
+  }
+}</code></pre>
+
+                                <h4 style="margin-top: 1.5rem;">Consulta de Producto con Proveedor y Categoría</h4>
+                                <pre class="code-block"><code class="language-graphql">query GetProductDetails($productId: Int!) {
+  product(ProductID: $productId) {
+    ProductName
+    UnitPrice
+    UnitsInStock
+    Category {
+      CategoryName
+      Description
+    }
+    Supplier {
+      CompanyName
+      ContactName
+      Country
+    }
+  }
+}</code></pre>
+
+                                <div class="info-box" style="margin-top: 1.5rem;">
+                                    <h4><i class="fas fa-info-circle"></i> Variables para la consulta</h4>
+                                    <pre class="code-block" style="margin: 0.5rem 0 0;"><code class="language-json">{
+  "productId": 1
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="graphql-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Tecnologías Utilizadas</h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                                    <span class="tech-tag">GraphQL</span>
+                                    <span class="tech-tag">Apollo Server</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">Mongoose</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 6 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 6 - Particionamiento de Bases de Datos
+                    </div>
+                    <h3>Optimización de Bases de Datos mediante Particionamiento</h3>
+                    
+                    <p>En esta sesión exploramos las técnicas de particionamiento de bases de datos, una estrategia fundamental para mejorar el rendimiento en entornos con grandes volúmenes de información.</p>
+                    
+                    <div style="margin: 1.5rem 0; text-align: center;">
+                        <img src="fotos/semana6.png" alt="Tipos de particionamiento" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Figura: Comparativa entre particionamiento vertical y horizontal</p>
+                    </div>
+                    
+                    <h4>Conceptos Clave</h4>
+                    <p>El particionamiento permite dividir grandes conjuntos de datos en partes más manejables, mejorando significativamente el rendimiento de las consultas y facilitando el mantenimiento de las bases de datos.</p>
+                    
+                    <div style="margin: 1rem 0; background-color: #f0f7ff; padding: 1rem; border-radius: 8px; border-left: 4px solid #4a90e2;">
+                        <h4 style="margin-top: 0; color: #2c5282;">🔍 Tipos de Particionamiento</h4>
+                        
+                        <h5>Particionamiento Vertical</h5>
+                        <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                            <li>Divide una tabla en múltiples tablas más pequeñas</li>
+                            <li>Mantiene una clave primaria común entre las tablas resultantes</li>
+                            <li>Ideal para separar columnas de uso frecuente de las menos utilizadas</li>
+                            <li>Reduce la carga de E/S al acceder solo a los campos necesarios</li>
+                        </ul>
+                        
+                        <h5>Particionamiento Horizontal</h5>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Divide los registros de una tabla según un criterio específico (ej: por año o región)</li>
+                            <li>Cada partición contiene una copia completa de la estructura de la tabla original</li>
+                            <li>SQL Server las gestiona como una única tabla lógica</li>
+                            <li>Permite distribuir físicamente los datos en diferentes ubicaciones</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Implementación en SQL Server</h4>
+                    <p>El proceso de implementación consta de tres pasos principales:</p>
+                    
+                    <div class="code-snippet" style="margin: 1rem 0;">
+                        <h5>Ejemplo de particionamiento</h5>
+                        <pre><code class="language-sql">-- Crear función de partición
+CREATE PARTITION FUNCTION pf_Anios (int)
+AS RANGE LEFT FOR VALUES (2019, 2020, 2021, 2022, 2023);
+
+-- Crear esquema de partición
+CREATE PARTITION SCHEME ps_Anios
+AS PARTITION pf_Anios ALL TO ([PRIMARY]);
+
+-- Crear tabla con particionamiento
+CREATE TABLE Ventas (
+    Anio int,
+    ClienteID int,
+    Monto money
+) ON ps_Anios(Anio);
+</code></pre>
+                    </div>
+                    
+                    <div style="margin: 1rem 0; background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                        <h4 style="margin-top: 0; color: #2f855a;">💡 Beneficios del Particionamiento</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li>Mejora el rendimiento de consultas que acceden a subconjuntos de datos</li>
+                            <li>Facilita el mantenimiento al permitir operaciones en particiones individuales</li>
+                            <li>Reduce los tiempos de respuesta al procesar menos datos por consulta</li>
+                            <li>Permite estrategias de almacenamiento más eficientes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Optimización</span>
+                        <span class="tech-tag">Particionamiento</span>
+                        <span class="tech-tag">Bases de Datos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 7 - Exposiciones -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 7 - Exposiciones
+                    </div>
+                    <h3>Galería de Exposiciones</h3>
+                    
+                    <div class="gallery-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                        <!-- Exposición 1 -->
+                        <div class="gallery-item">
+                            <div style="background-color: #f0f4ff; height: 200px; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <i class="fas fa-tasks" style="font-size: 4rem;"></i>
+                            </div>
+                            <p style="text-align: center; margin-top: 0.75rem; color: var(--text-secondary);">
+                                Exposición 1 - Tema Principal
+                            </p>
+                        </div>
+
+                        <!-- Exposición 2 -->
+                        <div class="gallery-item">
+                            <div style="background-color: #fff8f8; height: 200px; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <i class="fas fa-chart-line" style="font-size: 4rem;"></i>
+                            </div>
+                            <p style="text-align: center; margin-top: 0.75rem; color: var(--text-secondary);">
+                                Exposición 2 - Detalles y Análisis
+                            </p>
+                        </div>
+
+                        <!-- Exposición 3 -->
+                        <div class="gallery-item">
+                            <div style="background-color: #f0f9f0; height: 200px; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <i class="fas fa-cogs" style="font-size: 4rem;"></i>
+                            </div>
+                            <p style="text-align: center; margin-top: 0.75rem; color: var(--text-secondary);">
+                                Exposición 3 - Conclusiones
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                        <h4 style="margin-top: 0; color: #2f855a;">📌 Sobre las Exposiciones</h4>
+                        <p style="margin: 0.5rem 0 0; color: var(--text-secondary);">
+                            Las exposiciones de la semana 7 cubrieron temas avanzados de desarrollo web, incluyendo:
+                        </p>
+                        <ul style="margin: 0.75rem 0 0 1.5rem; color: var(--text-secondary);">
+                            <li>Arquitectura de aplicaciones web modernas</li>
+                            <li>Patrones de diseño y mejores prácticas</li>
+                            <li>Optimización de rendimiento</li>
+                            <li>Seguridad en aplicaciones web</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-stack" style="margin-top: 1.5rem;">
+                        <span class="tech-tag">Presentaciones</span>
+                        <span class="tech-tag">Desarrollo Web</span>
+                        <span class="tech-tag">Tecnologías Emergentes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 8 - Bases de Datos Distribuidas -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 8 - Bases de Datos Distribuidas
+                    </div>
+                    <h3>Introducción a las Bases de Datos Distribuidas</h3>
+                    
+                    <p>Una base de datos distribuida es un sistema en el cual la información no se encuentra almacenada en un solo servidor central, sino que se reparte entre varios equipos (nodos) conectados en red. Cada nodo puede almacenar una parte de los datos o una copia completa, y todos trabajan de manera coordinada como si fueran una sola base unificada.</p>
+                    
+                    <div style="margin: 1.5rem 0; padding: 1.5rem; background-color: #f0f7ff; border-radius: 8px; border-left: 4px solid #4a90e2;">
+                        <h4 style="margin-top: 0; color: #2c5282;">🔍 ¿Por qué surgen las bases de datos distribuidas?</h4>
+                        <p>Este modelo surge para mejorar el rendimiento, la disponibilidad y la tolerancia a fallos. Si un nodo falla, los demás pueden seguir funcionando y ofreciendo acceso a los datos, lo que asegura continuidad en los servicios.</p>
+                    </div>
+
+                    <h4>Características principales</h4>
+                    <div class="info-box">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                            <div>
+                                <h5 style="margin: 0 0 0.75rem 0; color: var(--primary-color);">Transparencia de distribución</h5>
+                                <p style="margin: 0; color: var(--text-secondary);">Los usuarios acceden a la base como si fuera única, aunque en realidad esté dividida en múltiples nodos.</p>
+                            </div>
+                            <div>
+                                <h5 style="margin: 0 0 0.75rem 0; color: var(--primary-color);">Replicación de datos</h5>
+                                <p style="margin: 0; color: var(--text-secondary);">Consiste en tener copias de la misma información en distintos servidores, garantizando disponibilidad si un nodo falla.</p>
+                            </div>
+                            <div>
+                                <h5 style="margin: 0 0 0.75rem 0; color: var(--primary-color);">Fragmentación o particionamiento</h5>
+                                <p style="margin: 0; color: var(--text-secondary);">División de la base en segmentos (por rangos de clientes, regiones o tipos de datos).</p>
+                            </div>
+                            <div>
+                                <h5 style="margin: 0 0 0.75rem 0; color: var(--primary-color);">Alta disponibilidad</h5>
+                                <p style="margin: 0; color: var(--text-secondary);">El sistema debe estar en funcionamiento el mayor tiempo posible, aun cuando haya fallos.</p>
+                            </div>
+                            <div>
+                                <h5 style="margin: 0 0 0.75rem 0; color: var(--primary-color);">Escalabilidad</h5>
+                                <p style="margin: 0; color: var(--text-secondary);">Posibilidad de añadir más nodos para manejar mayor cantidad de usuarios o datos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h4 style="margin-top: 0; color: var(--primary-color);">✅ Ventajas</h4>
+                            <ul style="margin: 0.75rem 0 0 1.25rem; color: var(--text-secondary);">
+                                <li>Mejor rendimiento al distribuir la carga de trabajo</li>
+                                <li>Disponibilidad continua: si un servidor cae, otro puede responder</li>
+                                <li>Escalabilidad flexible según la demanda</li>
+                                <li>Cercanía a los usuarios: datos almacenados geográficamente cercanos</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: #fff5f5; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h4 style="margin-top: 0; color: var(--primary-color);">⚠️ Desafíos</h4>
+                            <ul style="margin: 0.75rem 0 0 1.25rem; color: var(--text-secondary);">
+                                <li>Mantener la coherencia de los datos en todos los nodos</li>
+                                <li>Mayor complejidad en la administración</li>
+                                <li>Seguridad y control de acceso distribuidos</li>
+                                <li>Sincronización de datos en tiempo real</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack" style="margin-top: 1.5rem;">
+                        <span class="tech-tag">Bases de Datos Distribuidas</span>
+                        <span class="tech-tag">Escalabilidad</span>
+                        <span class="tech-tag">Alta Disponibilidad</span>
+                        <span class="tech-tag">Replicación</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 9 - Examen -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-file-alt"></i>
+                        Semana 9 - Examen de Conocimientos
+                    </div>
+                    <h3>Primer Examen</h3>
+                    <p>Se realizó un examen para evaluar los conocimientos adquiridos hasta la fecha.</p>
+                </div>
+            </div>
+
+            <!-- Semana 10-12 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semanas 10
+                    </div>
+                    <h3>Entrega del Proyecto por el Profesor</h3>
+                    
+                    <h4>1. Arquitectura de bases de datos distribuidas</h4>
+                    <p>Una base de datos distribuida es aquella en la que los datos se almacenan en múltiples nodos conectados por una red, pero se gestionan de manera que el usuario percibe el sistema como una sola base unificada.</p>
+                    
+                    <div style="margin: 1.5rem 0; padding: 1.5rem; background-color: #f0f7ff; border-radius: 8px; border-left: 4px solid #4a90e2;">
+                        <h4 style="margin-top: 0; color: #2c5282;">🔍 Características clave</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>Transparencia:</strong> El usuario no debe notar dónde están los datos (transparencia de localización y replicación)</li>
+                            <li><strong>Ventajas:</strong> Mayor disponibilidad, tolerancia a fallos y mejor tiempo de respuesta</li>
+                            <li><strong>Desafíos:</strong> Sincronización de datos, seguridad y consistencia global</li>
+                        </ul>
+                    </div>
+
+                    <h4>2. Paralelismo en bases de datos</h4>
+                    <p>El paralelismo busca ejecutar múltiples operaciones en simultáneo para mejorar el rendimiento. Se puede dar en varios niveles:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin-top: 0; color: var(--primary-color);">Paralelismo de consultas</h5>
+                            <p style="margin: 0.5rem 0 0; color: var(--text-secondary);">Ejecución de una consulta en diferentes nodos para reducir el tiempo de respuesta.</p>
+                        </div>
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin-top: 0; color: var(--primary-color);">Paralelismo de transacciones</h5>
+                            <p style="margin: 0.5rem 0 0; color: var(--text-secondary);">Varias transacciones pueden ejecutarse a la vez, siempre que no entren en conflicto.</p>
+                        </div>
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin-top: 0; color: var(--primary-color);">Paralelismo de datos</h5>
+                            <p style="margin: 0.5rem 0 0; color: var(--text-secondary);">Fragmentación de tablas y procesamiento en paralelo de diferentes fragmentos.</p>
+                        </div>
+                    </div>
+                    
+                    <p>Esto es clave en sistemas modernos como Google BigQuery o Amazon Redshift, que procesan millones de registros en segundos.</p>
+
+                    <h4>3. Confiabilidad (Reliability)</h4>
+                    <p>En una BDD, la confiabilidad es crítica. Se refiere a la capacidad del sistema para operar correctamente pese a fallos de hardware, software o red.</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+                        <div style="flex: 1; min-width: 200px; background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: #2f855a;">Tolerancia a fallos</h5>
+                            <p style="margin: 0; color: var(--text-secondary);">Mediante replicación de datos y protocolos de consenso (ej. Paxos, Raft).</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px; background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: #2f855a;">Durabilidad</h5>
+                            <p style="margin: 0; color: var(--text-secondary);">Uso de registros de transacciones (logs) para garantizar que las operaciones confirmadas no se pierdan.</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px; background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: #2f855a;">Disponibilidad</h5>
+                            <p style="margin: 0; color: var(--text-secondary);">Sistemas redundantes y balanceadores de carga aseguran el acceso continuo a la información.</p>
+                        </div>
+                    </div>
+
+                    <h4>4. Modelo de Schroeder</h4>
+                    <p>Propuesto en el contexto de seguridad informática, el modelo de Schroeder enfatiza principios de diseño seguro para sistemas:</p>
+                    
+                    <div style="background-color: #fff8e1; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #d69e2e; margin: 1.5rem 0;">
+                        <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-secondary);">
+                            <li><strong>Economía de mecanismos:</strong> Mantener la arquitectura simple para evitar vulnerabilidades.</li>
+                            <li><strong>Defensa en profundidad:</strong> Múltiples capas de seguridad.</li>
+                            <li><strong>Privilegio mínimo:</strong> Cada usuario o proceso debe tener solo los permisos estrictamente necesarios.</li>
+                            <li><strong>Auditoría y control:</strong> Registro de eventos para detectar anomalías.</li>
+                        </ul>
+                        <p style="margin: 1rem 0 0 0; color: #b7791f;">Estos principios aplicados a BDD refuerzan la seguridad y confiabilidad del sistema.</p>
+                    </div>
+
+                    <h4>5. Share-Nothing Architecture</h4>
+                    <p>La arquitectura share-nothing es un modelo en el que cada nodo del sistema tiene sus propios recursos (CPU, memoria, almacenamiento) y no los comparte con otros nodos.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Escalabilidad horizontal</h5>
+                            <p style="margin: 0; color: var(--text-secondary);">Se pueden agregar nodos sin grandes modificaciones.</p>
+                        </div>
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Reducción de cuellos de botella</h5>
+                            <p style="margin: 0; color: var(--text-secondary);">No existe competencia por recursos compartidos.</p>
+                        </div>
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Aislamiento de fallos</h5>
+                            <p style="margin: 0; color: var(--text-secondary);">Un nodo que falla no afecta directamente a los demás.</p>
+                        </div>
+                    </div>
+                    
+                    <p>Ejemplo: Sistemas como Hadoop o Cassandra implementan este enfoque, siendo altamente escalables y resilientes.</p>
+
+                    <div class="tech-stack" style="margin-top: 2rem;">
+                        <span class="tech-tag">Bases de Datos Distribuidas</span>
+                        <span class="tech-tag">Arquitectura</span>
+                        <span class="tech-tag">Seguridad</span>
+                        <span class="tech-tag">Escalabilidad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 11 - Full Text Search -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 11 - Búsqueda de Texto Completo
+                    </div>
+                    <h3>Full Text Search en SQL Server</h3>
+                    
+                    <p>La búsqueda de texto completo (<strong>Full Text Search</strong>) en Microsoft SQL Server permite realizar consultas avanzadas sobre datos almacenados en columnas de tipo texto. Para usarla es necesario crear un <strong>índice de texto completo</strong>, que puede incluir columnas de tipos como <code>varchar</code>, <code>nvarchar</code>, <code>text</code>, <code>xml</code>, entre otros.</p>
+                    
+                    <div style="margin: 1.5rem 0; padding: 1.5rem; background-color: #f0f7ff; border-radius: 8px; border-left: 4px solid #4a90e2;">
+                        <h4 style="margin-top: 0; color: #2c5282;">🔍 Características clave de Full Text Search</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>Término simple:</strong> Búsqueda de una palabra o frase exacta</li>
+                            <li><strong>Término de prefijo:</strong> Búsqueda de palabras que comienzan con un texto dado</li>
+                            <li><strong>Término de inflexión:</strong> Búsqueda de formas gramaticales de una palabra</li>
+                            <li><strong>Término de proximidad (NEAR):</strong> Busca palabras cercanas entre sí</li>
+                            <li><strong>Términos sinónimos y ponderados:</strong> Mediante diccionarios o valores de relevancia</li>
+                        </ul>
+                    </div>
+
+                    <p>Las consultas de texto completo se realizan con predicados y funciones de Transact-SQL como <code>CONTAINS</code>, <code>FREETEXT</code>, <code>CONTAINSTABLE</code> y <code>FREETEXTTABLE</code>.</p>
+                    
+                    <div class="code-snippet" style="margin: 1.5rem 0;">
+                        <h5>Ejemplo de consulta con CONTAINS:</h5>
+                        <pre><code class="language-sql">-- Buscar productos que contengan 'cámara' en su descripción
+SELECT * FROM Productos 
+WHERE CONTAINS(descripcion, 'cámara')
+
+-- Búsqueda con términos de proximidad
+SELECT * FROM Documentos
+WHERE CONTAINS(contenido, 'NEAR((base, datos), 5, TRUE)')
+</code></pre>
+                    </div>
+
+                    <div class="tech-stack" style="margin-top: 2rem;">
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Full Text Search</span>
+                        <span class="tech-tag">Búsquedas Avanzadas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 12 - Examen -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-file-alt"></i>
+                        Semana 12 - Examen Parcial
+                    </div>
+                    <h3>Segundo Examen Parcial</h3>
+                    <p>Se realizó un examen para evaluar los conocimientos adquiridos sobre bases de datos distribuidas, arquitecturas avanzadas y búsqueda de texto completo.</p>
+                    
+                    <div style="margin: 1.5rem 0; padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #6c757d;">
+                        <h4 style="margin-top: 0; color: #4a5568;">📝 Temas evaluados:</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-secondary);">
+                            <li>Arquitectura de bases de datos distribuidas</li>
+                            <li>Modelos de consistencia</li>
+                            <li>Replicación y particionamiento</li>
+                            <li>Búsqueda de texto completo en SQL Server</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 13 - Vistas Materializadas -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 13 - Vistas Materializadas
+                    </div>
+                    <h3>Optimización con Vistas Materializadas</h3>
+                    
+                    <p>Las vistas materializadas son objetos de base de datos que almacenan el resultado de una consulta como una tabla física. A diferencia de las vistas estándar, las vistas materializadas almacenan los datos físicamente y se pueden actualizar periódicamente.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin-top: 0; color: var(--primary-color);">Ventajas</h5>
+                            <ul style="margin: 0.5rem 0 0 1rem; color: var(--text-secondary);">
+                                <li>Mejor rendimiento en consultas complejas</li>
+                                <li>Reducción de la carga en el sistema</li>
+                                <li>Útiles para datos históricos o resumidos</li>
+                            </ul>
+                        </div>
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <h5 style="margin-top: 0; color: var(--primary-color);">Consideraciones</h5>
+                            <ul style="margin: 0.5rem 0 0 1rem; color: var(--text-secondary);">
+                                <li>Ocupan espacio de almacenamiento</li>
+                                <li>Pueden quedar desactualizadas</li>
+                                <li>Diferentes sintaxis según el SGBD</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet" style="margin: 1.5rem 0;">
+                        <h5>Ejemplo en SQL Server:</h5>
+                        <pre><code class="language-sql">-- Crear una vista materializada (SQL Server usa Índices Clusterizados en Vistas)
+CREATE VIEW dbo.VentasMensuales
+WITH SCHEMABINDING
+AS
+    SELECT 
+        YEAR(FechaVenta) AS Año,
+        MONTH(FechaVenta) AS Mes,
+        COUNT_BIG(*) AS TotalVentas,
+        SUM(Total) AS MontoTotal
+    FROM dbo.Ventas
+    GROUP BY YEAR(FechaVenta), MONTH(FechaVenta);
+GO
+
+-- Crear índice clusterizado para materializar la vista
+CREATE UNIQUE CLUSTERED INDEX IX_VentasMensuales 
+ON dbo.VentasMensuales(Año, Mes);
+</code></pre>
+                    </div>
+                    
+                    <div class="info-box" style="background-color: #f0f9f0; padding: 1rem; border-radius: 8px; border-left: 4px solid #38a169;">
+                        <h4 style="margin-top: 0; color: #2f855a;">� Conceptos Clave de Vistas Materializadas</h4>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <li><strong>Almacenamiento físico:</strong> Los datos se almacenan en disco</li>
+                            <li><strong>Actualización periódica:</strong> Se pueden actualizar según una programación</li>
+                            <li><strong>Mejora del rendimiento:</strong> Reducen la carga de consultas complejas</li>
+                            <li><strong>Útiles para datos históricos:</strong> Resumen de datos a lo largo del tiempo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack" style="margin-top: 2rem;">
+                        <span class="tech-tag">Vistas Materializadas</span>
+                        <span class="tech-tag">Optimización</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Defensa de Proyecto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar-alt"></i>
+                        Semana 14- Proyecto 
+                    </div>
+                    <h3>Defensa</h3>                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                        <div style="background-color: #f8f9fa; padding: 1.25rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            
+                        </div>
+                        
+                    </div>
+
+
+
+   
+
+           
+
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Tecnologías Utilizadas</h3>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                            <i class="fab fa-graphql" style="color: #e535ab; font-size: 1.5rem; margin-right: 1rem;"></i>
+                            <div>
+                                <div style="font-weight: 600;">GraphQL</div>
+                                <div style="font-size: 0.9rem; color: #666;">Lenguaje de consulta</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                            <i class="fas fa-code" style="color: #f16529; font-size: 1.5rem; margin-right: 1rem;"></i>
+                            <div>
+                                <div style="font-weight: 600;">XML</div>
+                                <div style="font-size: 0.9rem; color: #666;">Lenguaje de marcado</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-server" style="color: #311C87; font-size: 1.5rem; margin-right: 1rem;"></i>
+                            <div>
+                                <div style="font-weight: 600;">Apollo Server</div>
+                                <div style="font-size: 0.9rem; color: #666;">Servidor GraphQL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estilos para el examen -->
+    <style>
+        .exam-container {
+            margin: 1.5rem 0;
+        }
+        .exam-question {
+            background-color: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            border-left: 4px solid #4a90e2;
+        }
+        .exam-question p {
+            margin: 0.5rem 0;
+        }
+        .exam-question strong {
+            color: #2c5282;
+        }
+    </style>
+</div>
+
+</body>
+</html>
